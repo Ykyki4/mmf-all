@@ -29,7 +29,7 @@ class EducationCreate(BaseModel):
     document_url: safe_str(500) | None = None
 
     @model_validator(mode="after")
-    def validate_fields(self) -> "EducationCreate":
+    def validate_fields(self) -> EducationCreate:
         if self.institution_id is None and not self.institution_name:
             raise ValueError("Укажите institution_id или institution_name")
         _check_period(self.start_date, self.end_date)
@@ -49,7 +49,7 @@ class EducationUpdate(BaseModel):
     document_url: safe_str(500) | None = None
 
     @model_validator(mode="after")
-    def validate_period(self) -> "EducationUpdate":
+    def validate_period(self) -> EducationUpdate:
         _check_period(self.start_date, self.end_date)
         return self
 
@@ -72,7 +72,7 @@ class ExperienceCreate(BaseModel):
     description: safe_str(2000) | None = None
 
     @model_validator(mode="after")
-    def validate_fields(self) -> "ExperienceCreate":
+    def validate_fields(self) -> ExperienceCreate:
         needs_company = self.employment_type in (
             EmploymentType.labor_contract, EmploymentType.llc_participant, EmploymentType.civil_contract,
         )
@@ -92,7 +92,7 @@ class ExperienceUpdate(BaseModel):
     description: safe_str(2000) | None = None
 
     @model_validator(mode="after")
-    def validate_period(self) -> "ExperienceUpdate":
+    def validate_period(self) -> ExperienceUpdate:
         _check_period(self.start_date, self.end_date)
         return self
 
@@ -108,7 +108,7 @@ class SkillCreate(BaseModel):
     level: int = Field(ge=0, le=10, description="0 — знаком с терминологией, 10 — контрибутор")
 
     @model_validator(mode="after")
-    def validate_technology(self) -> "SkillCreate":
+    def validate_technology(self) -> SkillCreate:
         if self.technology_id is None and not self.technology_name:
             raise ValueError("Укажите technology_id (skill_id) или technology_name")
         return self

@@ -1,6 +1,6 @@
 [tool.ruff]
 line-length = 120
-target-version = "py312"
+target-version = "py314"
 extend-exclude = ["alembic/versions"]
 
 [tool.ruff.lint]
@@ -14,6 +14,8 @@ ignore = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
+# SQLModel разрешает связи между моделями из разных модулей по строковым аннотациям
+"app/models/*" = ["UP037", "UP045"]
 "tests/*" = ["S101", "S105", "S106"]
 "seed_data.py" = ["S105", "S106"]
 "create_user.py" = ["S105", "S106"]

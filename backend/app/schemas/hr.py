@@ -81,7 +81,7 @@ class ShortlistCandidateRead(BaseModel):
 
 
 class ShortlistDetail(ShortlistRead):
-    candidates: "Page[ShortlistCandidateRead]"
+    candidates: Page[ShortlistCandidateRead]
 
 
 class ShortlistCandidateAdd(BaseModel):

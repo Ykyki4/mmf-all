@@ -25,7 +25,7 @@ class RegisterRequest(BaseModel):
         return value
 
     @model_validator(mode="after")
-    def passwords_match(self) -> "RegisterRequest":
+    def passwords_match(self) -> RegisterRequest:
         if self.password != self.password_confirm:
             raise ValueError("Пароли не совпадают")
         return self

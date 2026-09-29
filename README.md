@@ -2,7 +2,7 @@
 
 Единая серверная часть (REST API + PostgreSQL) для трёх клиентов: desktop (HR), web и mobile.
 
-**Стек:** Python 3.12, FastAPI, SQLModel + SQLAlchemy 2 (async, asyncpg), Alembic, PostgreSQL 16, Docker Compose.
+**Стек:** Python 3.14, FastAPI, SQLModel + SQLAlchemy 2 (async, asyncpg), Alembic, PostgreSQL 16, Docker Compose.
 
 ## Быстрый старт
 
